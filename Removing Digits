@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define lli long long
+#define mod 1000000007
+lli maxvalue(lli n)
+{
+	lli r=0;
+	lli maxv=0;
+	while(n!=0)
+	{
+		r=n%10;
+		maxv=max(maxv,r);
+		n=n/10;
+	}
+	return maxv;
+}
+int main()
+{
+	lli n;
+	cin>>n;
+	lli steps=0;
+	while(n>9)
+	{
+		lli k=maxvalue(n);
+		steps++;
+		n=n-k;
+	}
+	cout<<steps+1<<endl;
+}
+//Greedy approach
