@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define lli long long
+#define mod 1000000007
+int main()
+{
+	lli n;
+	cin>>n;
+	lli dp[n+1];
+	memset(dp,0,sizeof(dp));
+	dp[0]=dp[1]=1;
+	lli i,s;
+	for(i=2;i<n+1;i++)
+	{
+		dp[i]=s=(2*dp[i-1])%mod;
+		if(i>=7)
+		{
+			dp[i]=(s%mod-dp[i-7]%mod)%mod;	
+		}
+ 
+	}
+	 
+	cout<<dp[n]%mod;
+}
+//normal obsertion //
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define lli long long
+int main()
+{
+	lli n,i,j;
+	cin>>n;
+	lli dp[n+1];
+	dp[0]=1;
+	dp[1]=1;
+	for(i=2;i<n+1;i++)
+	{
+		dp[i]=0;
+		for(j=1;j<=6;j++)
+		{
+			if(j>i)
+			{
+				continue;
+			}
+			dp[i]=(dp[i]%1000000007+dp[i-j]%1000000007)%1000000007;
+		}
+	}
+	cout<<dp[n]%1000000007;
+}
+
+//classical DP aproach
