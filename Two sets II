@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define lli long long
+#define mod 1000000007
+int main()
+{
+	lli n,i,j,sum;
+	cin>>n;
+	sum=(n*(n+1))/2;
+	vector<vector<lli> >dp(n,vector<lli>(sum+1,0));
+	if(sum%2!=0)
+	{
+		cout<<0<<endl;
+	}
+	else
+	{
+   sum/=2;
+   
+    dp[0][0]=1;
+    for(int i=1;i<n;i++){
+        for(int j=0;j<=sum;j++){
+            dp[i][j]=dp[i-1][j];
+            if(j>=i)
+                dp[i][j]+=dp[i-1][j-i];
+            dp[i][j]%=mod;
+        }
+    }
+    cout << dp[n-1][sum];
+	}
+}
