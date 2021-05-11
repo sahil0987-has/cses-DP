@@ -1,0 +1,92 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define lli long long
+#define mod 1000000007
+#define INF 1e9
+int main()
+{
+	lli i,j,n;
+	cin>>n;
+	set<lli>s;
+	while(n--)
+	{
+		cin>>i;
+		if(s.size()==0)
+		{
+			s.insert(i);
+			continue;
+		}
+		else
+		{
+			vector<lli>v;
+			for(auto it=s.begin();it!=s.end();it++)
+			{
+				v.push_back(*it+i);
+			}
+			s.insert(i);
+			for(j=0;j<v.size();j++)
+			{
+				s.insert(v[j]);
+			}		
+		}
+	}
+	cout<<s.size()<<endl;
+			for(auto it=s.begin();it!=s.end();it++)
+		{
+			cout<<*it<<" ";
+		}
+	
+}
+// take input as running number
+
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define lli long long
+#define mod 1000000007
+#define INF 1e9
+int main()
+{
+	lli n,i;
+	cin>>n;
+	set<lli>s;
+	 
+	lli arr[n];
+	for(i=0;i<n;i++)
+	{
+		cin>>arr[i];
+	}
+	sort(arr,arr+n);
+	for(i=0;i<n;i++)
+	{
+		if(s.size()==0)
+		{
+			s.insert(arr[i]);
+			continue;
+			
+		}
+		else
+		{
+			vector<lli>v;
+			for(auto it=s.begin();it!=s.end();it++)
+			{
+				v.push_back(arr[i]+*it);
+			}
+			s.insert(arr[i]);
+			for(i=0;i<v.size();i++)
+			{
+				s.insert(v[i]);
+			}	
+ 
+		}
+	}
+	cout<<s.size()<<endl;
+	for(auto it=s.begin();it!=s.end();it++)
+	{
+		cout<<*it<<" ";
+	}
+}
+//above code will give error as it will miss the last elements in few cases
