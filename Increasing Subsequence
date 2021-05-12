@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define lli long long
+#define mod 1000000007
+#define INF 1e9
+#define pb push_back
+int main()
+{
+	lli n;
+	cin>>n;
+	lli A[n];
+	for(lli i=0;i<n;i++)
+	{
+		cin>>A[i];
+	}
+	vector<lli>dp;
+	dp.pb(A[0]);
+	for(lli i=1;i<n;i++)
+	{
+		if(dp.back()<A[i])
+		{
+			dp.pb(A[i]);
+		}
+		else
+		{
+			int j=lower_bound(dp.begin(),dp.end(),A[i])-dp.begin();
+			dp[j]=A[i];
+		}
+	}
+	cout
